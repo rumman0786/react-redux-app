@@ -1,8 +1,7 @@
-import * as ActionTypes from './actionTypes';
+import * as ActionTypes from '../actionTypes';
 
 const initialState = {
     counter: 0,
-    result: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,19 +27,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 counter: state.counter + action.value
-            }
-
-        case ActionTypes.STORE_RESULT:
-            return {
-                ...state, //copy/spread original state
-                result: state.result.concat({id: new Date(), value: state.counter}) //override result with copy of state.counter, concat returns copy
-            }
-        case ActionTypes.REMOVE_RESULT:
-            const newArray = state.result.filter(obj => obj.id !== action.identifier);
-            
-            return {
-                ...state,
-                result: newArray
             }
     }
 
