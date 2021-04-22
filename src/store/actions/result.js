@@ -8,8 +8,9 @@ function store(valueParam) {
 }
 
 export const storeAsync = (valueParam) => {
-    return dispatch => {
+    return (dispatch, getState) => {
         setTimeout(() => {
+            // console.log(getState().ctr.counter);
             dispatch(store(valueParam))
         } , 2000);
     }

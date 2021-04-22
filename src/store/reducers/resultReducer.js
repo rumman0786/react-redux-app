@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
         case ActionTypes.STORE_RESULT:
             return {
                 ...state, //copy/spread original state
-                result: state.result.concat({id: new Date(), value: action.result}) //override result with copy of state.counter, concat returns copy
+                result: state.result.concat({id: new Date(), value: action.result * 2}) //override result with copy of state.counter, concat returns copy
             }
         case ActionTypes.REMOVE_RESULT:
             const newArray = state.result.filter(obj => obj.id !== action.identifier);
