@@ -31,11 +31,19 @@ export const substract = (valueParam) => {
     };
 }
 
-export const store = (valueParam) => {
+function store(valueParam) {
     return {
         type: STORE_RESULT,
         result: valueParam
-    };
+    }; 
+}
+
+export const storeAsync = (valueParam) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(store(valueParam))
+        } , 2000);
+    }
 }
 
 export const remove = (valueParam) => {
