@@ -4,6 +4,11 @@ const initialState = {
     result: []
 };
 
+const removeResult = (state, action) => {
+    const newArray = state.result.filter(obj => obj.id !== action.identifier);
+    return updateObject(state, {result: newArray});
+};
+
 const reducer = (state = initialState, action) => {
 
     switch(action.type) {
@@ -12,8 +17,7 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {result: state.result.concat({id: new Date(), value: action.result * 2})});
             
         case ActionTypes.REMOVE_RESULT:
-            const newArray = state.result.filter(obj => obj.id !== action.identifier);
-            return updateObject(state, {result: newArray});
+            return removeResult(state, action);
     }
 
     return state;
